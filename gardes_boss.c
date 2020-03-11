@@ -51,7 +51,7 @@ void garde(){
                 }
                 printf(GREEN "Vous attaquez le garde, vous lui infligez " CYAN "%d " GREEN "dégâts.\n" RESET,player.force+atkCrit);
                 sleep(1);
-                gardes.pv-=player.force;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
+                gardes.pv-=player.force+atkCrit;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
                 if(gardes.pv<=0){                                                                  // Mort du garde
                     gardes.pv=0;                                                                   // Pour que ça n'affiche pas une valeur inférieure à 0 (prévention d'erreur)
                     printf(RED "Le garde est mort. Vous gagnez " MAGENTA "500" RED "xp.\n" RESET);
@@ -121,7 +121,7 @@ void boss(){
                 }
                 printf(GREEN "Vous attaquez le garde, vous lui infligez " CYAN "%d " GREEN "dégâts.\n" RESET,player.force+atkCrit);
                 sleep(1);
-                pablito.pv-=player.force;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
+                pablito.pv-=player.force+atkCrit;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
                 if(pablito.pv<=0){                                                                  // Mort du garde
                     pablito.pv=0;                                                                   // Pour que ça n'affiche pas une valeur inférieure à 0 (prévention d'erreur)
                     gagne();
