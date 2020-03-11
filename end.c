@@ -24,6 +24,7 @@ void perdu(){
 }
 
 void gagne(){
-    printf(GREEN "Vous avez fini le jeu! Bravo.\n" RESET);
+    printf(GREEN "Vous avez fini le jeu! Bravo.\n\n\n" RESET);
+    sleep(2);
     menu();
 }

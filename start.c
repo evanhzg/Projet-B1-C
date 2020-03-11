@@ -32,7 +32,7 @@ void start(){                   // Lancement du jeu et choix initiaux jusqu'aux 
     while(verifName!=1){
         printf(GREEN "Entre ton pseudo:\n" WHITE);
         scanf("%s",player.name);
-        printf(CYAN "Ton nom est donc %s, c'est bien ça?\n1: "YELLOW"oui\n2: non\n" WHITE,player.name);
+        printf(CYAN "Ton nom est donc %s, c'est bien ça?\n"YELLOW"1: oui\n2: non\n" WHITE,player.name);
         scanf("%d",&verifName);
     }
     printf(CYAN "Ok, %s.\n",player.name);
@@ -88,16 +88,15 @@ void start(){                   // Lancement du jeu et choix initiaux jusqu'aux 
     sleep(1);
     
     maxChoix=2;
-    while(*choice!=1 && *choice!=2){
-        switch(choice()){
-            case 1:
-                printf(CYAN"Vous marchez sur le sentier et vous arrivez devant une auberge qui semble abandonnée\n");
-                sleep(1);
-                auberge();
-                
-            default:
-                printf(CYAN "une odeur mortuaire sort du cadavre, vous decidez de prendre la route de l'auberge\n");
-                auberge();
-        }
+    
+    switch(choice()){
+        case 1:
+            printf(CYAN"Vous marchez sur le sentier et vous arrivez devant une auberge qui semble abandonnée\n");
+            sleep(1);
+            auberge();
+            
+        default:
+            printf(CYAN "une odeur mortuaire sort du cadavre, vous decidez de prendre la route de l'auberge\n");
+            auberge();
     }
 }

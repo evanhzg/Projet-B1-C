@@ -25,22 +25,20 @@ void menu(){                    // Menu de base, choix entre 4 options: nvelle s
     printf(MAGENTA "2: LOAD SAVED GAME\n" RESET);
     printf(YELLOW "3: ABOUT\n" RESET);
     printf(RED "4: EXIT\n" BLUE);
-    while (*choice!=1 && *choice!=2 && *choice!=3 && *choice!=4){
-        switch (choice()){
-            case 1:
-                start();
-                break;
-            case 2:
-                loadSave();
-                break;
-            case 3:
-                credits();
-                break;
-            case 4:
-                exit(0);
-            default:
-                menu();
-        }
+    switch (choice()){
+        case 1:
+            start();
+            break;
+        case 2:
+            loadSave();
+            break;
+        case 3:
+            credits();
+            break;
+        case 4:
+            exit(0);
+        default:
+            menu();
     }
 }
 

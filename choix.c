@@ -40,44 +40,44 @@ int choice(){
         if(entree==0){                                                                                   // Affichage de l'inventaire via la commande "inv"
             printf(GREEN "==INVENTAIRE==\n");
             if(*couteau>0){                                                                                  // N'affiche que si on en possède au moins 1
-                printf("Couteau\n");
+                printf(YELLOW"Couteau\n");
             }
             if(*potions>0){                                                                                  // Affiche aussi la quantité de l'item en question si possible
-                printf("Potions: %d\n",*inv+1);
+                printf(YELLOW"Potions: %d\n",*potions);
             }
             else{
             }
             if(*clefs>0){
-                printf("Clés: %d\n",*inv+2);
+                printf(YELLOW"Clé\n");
             }
             else{
             }
             if(*lampe>0){
-                printf("Lampe\n");
+                printf(YELLOW"Lampe\n");
             }
             else{
             }
             if(*parapluie>0){
-                printf("Parapluie pour la pluie\n");
+                printf(YELLOW"Parapluie pour la pluie\n");                                  // ABANDONNÉ, DEVAIT PROTÉGER D'UNE ATK SPÉ DU BOSS FINAL
             }
             else{
             }
             if(*pvBoost>0){
-                printf("PV BOOST\n");
+                printf(YELLOW"PV BOOST\n");                                                 // ABANDONNÉ
             }
             else{
             }
-            if(*strBoost>0){
-                printf("STRENGTH BOOST\n");
+            if(*strBoost>0){                                                                // ABANDONNÉ
+                printf(YELLOW"STRENGTH BOOST\n");
             }
             else{
             }
             if(*barque>0){
-                printf("Barque\n");
+                printf(YELLOW"Barque\n");
             }
             else{
             }
-            printf("==============\n"RESET);
+            printf(GREEN"==============\n"RESET);
             printf(YELLOW "Vous avez %d points d'xp (%d avant le niveau %d).\n\n" RESET,player.xp,xpRequise-player.xp,player.palier+1);
         }
         if(entree==9){

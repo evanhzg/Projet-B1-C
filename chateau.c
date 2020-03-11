@@ -30,16 +30,14 @@ void chateau(){
         sleep(1);
         printf(YELLOW "2:Rentrer dans le bureau\n" WHITE);
         sleep(1);
-        while(*choice!=1 && *choice!=2){
-            switch(choice()){
-                case 1:
-                    printf(CYAN "Vous montez les escaliers, un garde royal vous agresse en haut des marches.\n");
-                    garde();
-                
-                case 2:
-                    printf(CYAN "Vous pénétrez dans le bureau, un garde royal vous agresse.\n");
-                    garde();
-            }
+        switch(choice()){
+            case 1:
+                printf(CYAN "Vous montez les escaliers, un garde royal vous agresse en haut des marches.\n");
+                garde();
+            
+            case 2:
+                printf(CYAN "Vous pénétrez dans le bureau, un garde royal vous agresse.\n");
+                garde();
         }
         printf(GREEN "vous récuperez tous vos "YELLOW"PV\n");
         player.pv=player.max_pv;
@@ -62,16 +60,22 @@ void chateau(){
         boss();
 
         printf(CYAN "Vous avez battu Pablito, une "YELLOW"grosse clé"CYAN" tombe de sa poche, vous la ramasser et apercevez une grande porte au fond de l'allée\n ");
+        sleep(1);
         printf(CYAN"Vous poussez la porte et voyez un sentier qui mène à la ville la plus proche, un sentiment de soulagement vous envahit\n");
+        sleep(1);
         printf(CYAN"Vous vous retournez une dernière en direction du chateau, mais..."RED"plus rien.\n ");
+        sleep(1);
         printf(CYAN "Le chateau à disparu ainsi que la grotte, l'épaisse forêt et le lac.\n");
-        printf(CYAN "Pourtant cela ne vous tracasse pas plus que ça, vous continuez à avancer le regarde vide en vous demandant... Mais qui etait ce fameux Pablito..?");
-
+        sleep(1);
+        printf(CYAN "Pourtant cela ne vous tracasse pas plus que ça, vous continuez à avancer le regarde vide en vous demandant... Mais qui etait ce fameux Pablito..?\n\n");
+        sleep(1);
+        gagne();
         }
     else{
         printf(RED"Vous n'avez pas la "YELLOW"clé"RED", revenez quand vous l'aurez.\n");
         sleep(1);
         printf(GREEN"Elle se trouve dans la grotte à l'Ouest!\n");
+        sleep(1);
     }
 }
     

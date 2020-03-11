@@ -34,9 +34,10 @@ void empSentier(){
     printf(YELLOW "1:Prendre la barque\n");
     printf("2:Laisser la barque au pied de l'arbre\n" WHITE);
     switch(choice()){
-        default:
+        case 1:
             printf(GREEN "Vous prenez la " YELLOW "barque" GREEN " et la mettez dans votre inventaire.\n");
-            barque+=1;
+            *barque=1;
+            printf(CYAN "Vous retournez à l'auberge.");
             
         case 2:
             printf(CYAN "Vous laissez la barque et retournez à l'auberge\n");
@@ -73,18 +74,16 @@ void foret(){
     sleep(1);
     printf(YELLOW "1:Prendre le sentier sur votre droite\n");
     printf("2:Prendre le chemin boueux.\n" WHITE);
-    while(*choice!=1 && *choice!=2){
-        switch(choice()){
-            default:
-                printf(CYAN "Vous empruntez le sentier.\n");
-                sleep(1);
-                empSentier();
-                
-            case 2:
-                printf(CYAN "Vous decidez de longer le chemin boueux\n");
-                sleep(1);
-                empBoueux();
-        }
+    switch(choice()){
+        default:
+            printf(CYAN "Vous empruntez le sentier.\n");
+            sleep(1);
+            empSentier();
+            
+        case 2:
+            printf(CYAN "Vous decidez de longer le chemin boueux\n");
+            sleep(1);
+            empBoueux();
     }
 }
 

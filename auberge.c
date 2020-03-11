@@ -19,7 +19,7 @@
 #define WHITE  "\x1B[37m"
 
 void auberge(){
-    printf("Vous etes à l'auberge. Où aller ensuite?\n1 = EST\n2 = SUD\n3 = OUEST\n4 = NORD\n");
+    printf(WHITE"Vous etes à l'auberge. Où aller ensuite?\n" YELLOW "1 = EST\n2 = SUD\n3 = OUEST\n4 = NORD\n" WHITE);
     switch(choice()){
         case 1:
             foret();

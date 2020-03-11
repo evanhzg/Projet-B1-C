@@ -63,7 +63,12 @@ void combat(){
                 
             case 2:
                 if (fuite<=20){
-                    
+                    printf(RED "Vous fuyez le combat avec succès.\n");
+                    monstre.pv=0;
+                    player.xp-=monstre.palier;
+                    if(player.xp<0){
+                        player.xp=0;
+                    }
                 }
                 break;
                 
