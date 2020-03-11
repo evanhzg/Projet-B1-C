@@ -25,7 +25,7 @@ extern int *potions;
 // COMBATS CONTRE LES MONSTRES
 void combat(){
     monstre.pv=40+20*player.palier;
-    printf(MAGENTA "Vous affrontez un monstre de niveau " RED "%d" MAGENTA ".\n" RESET,monstre.palier);
+    printf(MAGENTA "\nVous affrontez un monstre de niveau " RED "%d" MAGENTA ".\n" RESET,monstre.palier);
     
     while(player.pv>0 && monstre.pv>0){                                                             // Le combat ne se finit que si l'un des deux tombe a 0 ou moins de PV
         int atkMonstre = rand() % 100+1;                                                            // %tage de chances que le monstre touche le joueur (20 au lvl.1)
@@ -42,22 +42,21 @@ void combat(){
         }
         maxChoix=3;
         
-        printf(GREEN "\nQue voulez-vous faire?\n1=atk\n2=fuir\n3=potion\n" RESET);
-        
+        printf(GREEN "\nQue voulez-vous faire?\n1=atk\n2=fuir\n3=potion\n" WHITE);
         switch(choice()){
             case 1:
                 if (atkCrit>0){
-                    printf(RED "COUP CRITIQUE! DÉGÂTS X2" RESET);
+                    printf(RED "COUP CRITIQUE! DÉGÂTS X2\n" RESET);
                     sleep(1);
                 }
                 printf(GREEN "Vous attaquez le monstre, vous lui infligez " CYAN "%d " GREEN "dégâts.\n" RESET,player.force+atkCrit);
                 sleep(1);
-                monstre.pv-=player.force;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
+                monstre.pv-=player.force+atkCrit;                                                           // Dégâts dépendent de la force du joueur (qui est son arme, en réalité)
                 if(monstre.pv<=0){                                                                  // Mort du monstre
                     monstre.pv=0;                                                                   // Pour que ça n'affiche pas une valeur inférieure à 0 (prévention d'erreur)
-                    printf(RED "Le monstre est mort. Vous gagnez " MAGENTA "100" RED "xp.\n" RESET);
+                    printf(RED "Le monstre est mort. Vous gagnez " MAGENTA "%d" RED "xp.\n" RESET,100*monstre.palier);
                     sleep(1);
-                    player.xp+=100;                                                                 // Augmente l'xp du joueur proportionnellement au lvl du monstre
+                    player.xp+=100*monstre.palier;                                                  // Augmente l'xp du joueur proportionnellement au lvl du monstre
                     paliers();
                 }
                 break;
@@ -77,9 +76,8 @@ void combat(){
                 }
                 break;
                 
-            default:
-                choice();
-                break;
+            case 4:
+                monstre.pv=0;
         }
         
         if(monstre.pv>0){                                                                           // Tour du monstre: il a un %tage de chances de rater la cible

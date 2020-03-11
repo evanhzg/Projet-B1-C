@@ -20,17 +20,19 @@
 
 extern int maxChoix;
 extern int *couteau;
+extern int *potions;
 
 void start(){                   // Lancement du jeu et choix initiaux jusqu'aux choix selon les zones (forêt,lac,grotte,château)
+    *potions=2;
     player.max_pv=100;
     player.pv=player.max_pv;
     player.palier=1;
     int verifName=0;
-    printf(CYAN "Salut, je suis le Professeur Chien, comment t'appelles-tu?\n" RESET);
+    printf(CYAN "Salut, je suis le Professeur Pablito, comment t'appelles-tu?\n" RESET);
     while(verifName!=1){
-        printf(GREEN "Entre ton pseudo:\n" BLUE);
+        printf(GREEN "Entre ton pseudo:\n" WHITE);
         scanf("%s",player.name);
-        printf(GREEN "Ton nom est donc %s, c'est bien ça?\n1: oui\n2: non\n" BLUE,player.name);
+        printf(CYAN "Ton nom est donc %s, c'est bien ça?\n1: "YELLOW"oui\n2: non\n" WHITE,player.name);
         scanf("%d",&verifName);
     }
     printf(CYAN "Ok, %s.\n",player.name);
@@ -62,37 +64,40 @@ void start(){                   // Lancement du jeu et choix initiaux jusqu'aux 
         sleep(1);
     }
     
-    printf(CYAN "Cette présence.. c'est un " RED "MONSTRE" CYAN ", tu vas en affronter plusieurs et celui-ci sera ton premier.\nIl est de niveau 1, profites-en: ils ne seront pas tous aussi faciles à battre.");
+    printf(CYAN "Cette présence.. c'est un " RED "MONSTRE" CYAN ", tu vas en affronter plusieurs et celui-ci sera ton premier.\nIl est de niveau 1, profites-en: ils ne seront pas tous aussi faciles à battre.\n\n");
     
     combat();
     
     printf(CYAN "Le telephone sonne...\n");
     sleep(1);
-    printf("Prof: Félicitations, tu viens de passer niveau 2. Les monstres deviendront de plus en plus forts durant ton aventure, prépares-toi bien!\n");
+    printf(WHITE "Prof: Félicitations, tu viens de passer niveau 2. Les monstres deviendront de plus en plus forts durant ton aventure, prépares-toi bien!\n");
     sleep(1);
     printf(MAGENTA "%s: Quelqu'un peut m'expliquer ce qu'il se passe? J'ai failli mourir!!\n", player.name);
     sleep(1);
-    printf(CYAN "Prof: Tu as été touché par le monstre. Certains monstres te donneront des potions de soin, des piles ou des clefs en guise de butin, utilise la potion pour te soigner.\n");
+    printf(WHITE "Prof: Tu as été touché par le monstre. Certains monstres te donneront des potions de soin, des piles ou des clefs en guise de butin, utilise la potion pour te soigner.\n");
     sleep(1);
-    printf(GREEN "%s se soigne et regagne" RED "20" GREEN "PV\n",player.name);
-    printf(CYAN "Prof: Tu vois le grand château derrière toi? Je suis enfermé dedans! Aides-moi à en sortir et je t'aiderai à partir d'ici.\n");
+    printf(GREEN "%s se soigne et regagne" YELLOW " 20 " GREEN "PV\n",player.name);
+    printf(WHITE "Prof: Tu vois le grand château derrière toi? Je suis enfermé dedans! Aides-moi à en sortir et je t'aiderai à partir d'ici.\n");
     sleep(1);
     printf(MAGENTA "%s: Quoi !? Comment ?!!\n",player.name);
     sleep(1);
-    printf(CYAN "Je dois te laisser... fais un tour au château quand tu peux.\n");
+    printf(WHITE "Je dois te laisser... fais un tour au château quand tu peux.\n");
     sleep(1);
 
-    printf("Vous voyez un sentier avec une auberge au loin, voulez vous emprunté le sentier ou rester avec la depouille du monstre ?\n1:Prendre le sentier\n2:Rester avec le monstre\n");
+    printf(CYAN "Vous voyez un sentier avec une auberge au loin, voulez vous emprunté le sentier ou rester avec la depouille du monstre ?\n"YELLOW"1:Prendre le sentier\n2:Rester avec le monstre\n" WHITE);
     sleep(1);
     
     maxChoix=2;
-    switch(choice()){
-        case 1:
-            printf("Vous marchez sur le sentier et vous arrivez devant une auberge qui semble abandonnée\n");
-            auberge();
-            
-        default:
-            printf("une odeur mortuaire sort du cadavre, vous decidez de prendre la route de l'auberge\n");
-            auberge();
+    while(*choice!=1 && *choice!=2){
+        switch(choice()){
+            case 1:
+                printf(CYAN"Vous marchez sur le sentier et vous arrivez devant une auberge qui semble abandonnée\n");
+                sleep(1);
+                auberge();
+                
+            default:
+                printf(CYAN "une odeur mortuaire sort du cadavre, vous decidez de prendre la route de l'auberge\n");
+                auberge();
+        }
     }
 }

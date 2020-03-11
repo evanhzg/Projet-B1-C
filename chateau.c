@@ -21,50 +21,57 @@
 extern int *clefs;
 
 void chateau(){
-    if(*clefs>=0){
-        printf("Vous utilisez la clé pour rentrer dans le chateau.\n");
+    if(*clefs==1){
+        printf(CYAN "Vous utilisez la " YELLOW "clé " CYAN "pour rentrer dans le chateau.\n\n");
         sleep(1);
-        printf("Vous apercevez des escaliers en face de vous ainsi qu une porte sur votre droite avec ecrit 'bureau' dessus\n");
+        printf(CYAN "Vous apercevez des escaliers en face de vous ainsi qu une porte sur votre droite avec ecrit 'bureau' dessus\n");
         sleep(1);
-        printf("1:Prendre les escaliers\n");
+        printf(YELLOW "1:Prendre les escaliers\n");
         sleep(1);
-        printf("2:Rentrer dans le bureau\n");
+        printf(YELLOW "2:Rentrer dans le bureau\n" WHITE);
         sleep(1);
-        switch(choice()){
-            case 1:
-                printf("Vous montez les escaliers, un garde royal vous agresse en haut des marches.\n");
-                garde();
-            
-            case 2:
-                printf("Vous pénétrez dans le bureau, un garde royal vous agresse.\n");
-                garde()
+        while(*choice!=1 && *choice!=2){
+            switch(choice()){
+                case 1:
+                    printf(CYAN "Vous montez les escaliers, un garde royal vous agresse en haut des marches.\n");
+                    garde();
+                
+                case 2:
+                    printf(CYAN "Vous pénétrez dans le bureau, un garde royal vous agresse.\n");
+                    garde();
+            }
         }
-        printf("vous récuperez 100% de vos PV\n");
+        printf(GREEN "vous récuperez tous vos "YELLOW"PV\n");
         player.pv=player.max_pv;
         sleep(1);
-        printf("Vous venez de vaincre le garde royal, vous entendez vote téléphone sonner dans votre poche, c'est Pablito.\n");
+        printf(CYAN "Vous venez de vaincre le "RED"garde royal"CYAN", vous entendez vote téléphone sonner dans votre poche, c'est Pablito.\n");
         sleep(1);
-        printf("Je vois que tu viens de vaincre le garde royal, je suis au bout du chateau rejoint moi le plus vite possible.\n");
+        printf(WHITE "Je vois que tu viens de vaincre le garde royal, je suis au bout du chateau rejoint moi le plus vite possible.\n");
         sleep(1);
-        printf("Vous courez à travers le château et vous apercevez une grande porte méttalique\n");
+        printf(CYAN"Vous courez à travers le château et vous apercevez une grande porte méttalique\n");
         sleep(1);
-        printf("Un sentiment de crainte et de doute vous envahit mais vous pousser la porte et apercevez le professeur Pablito\n");
+        printf(CYAN"Un sentiment de crainte et de doute vous envahit mais vous poussez la porte et apercevez le professeur Pablito\n");
         sleep(1);
-        printf("Bonjour nom du joueur, je vois que tu as traversé de nombreuses épreuve pour arriver jusque ici.\n");
+        printf(WHITE"Bonjour %s, je vois que tu as traversé de nombreuses épreuve pour arriver jusque ici.\n",player.name);
         sleep(1);
-        printf("Mais ta dernière épreuve... C'EST MOI! Prepare toi !\n");
+        printf(WHITE "Mais ta dernière épreuve... C'EST MOI! Prepare toi !\n");
         sleep(1);
-        printf("Pablito vous agresse\n");
+        printf(RED "Pablito vous agresse\n");
         sleep(1);
 
         boss();
 
-        printf("Vous avez battu Pablito, une grosse clé tombe de sa poche, vous la ramasser et apercevez une grande porte au fond de l'allée\n ");
-        printf("Vous poussez la porte et voyez un sentier qui mène à la ville la plus proche, un sentiment de soulagement vous envahit\n");
-        printf("Vous vous retournez une dernière en direction du chateau, mais...plus rien.\n ")
-        printf("Le chateau à disparu ainsi que la grotte, l'épaisse forêt et le lac.\n")
-        printf("Pourtant cela ne vous tracasse pas plus que ça, vous continuez à avancer le regarde vide en vous demandant... Mais qui etait ce fameux pablito ?");
+        printf(CYAN "Vous avez battu Pablito, une "YELLOW"grosse clé"CYAN" tombe de sa poche, vous la ramasser et apercevez une grande porte au fond de l'allée\n ");
+        printf(CYAN"Vous poussez la porte et voyez un sentier qui mène à la ville la plus proche, un sentiment de soulagement vous envahit\n");
+        printf(CYAN"Vous vous retournez une dernière en direction du chateau, mais..."RED"plus rien.\n ");
+        printf(CYAN "Le chateau à disparu ainsi que la grotte, l'épaisse forêt et le lac.\n");
+        printf(CYAN "Pourtant cela ne vous tracasse pas plus que ça, vous continuez à avancer le regarde vide en vous demandant... Mais qui etait ce fameux Pablito..?");
 
         }
+    else{
+        printf(RED"Vous n'avez pas la "YELLOW"clé"RED", revenez quand vous l'aurez.\n");
+        sleep(1);
+        printf(GREEN"Elle se trouve dans la grotte à l'Ouest!\n");
     }
+}
     
